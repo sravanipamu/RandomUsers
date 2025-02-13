@@ -1,9 +1,7 @@
 package com.sravani.randomusers
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class RandomUserApplication : Application() {
-    override fun onCreate() {
-        super.onCreate()
-    }
-}
+@HiltAndroidApp
+class RandomUserApplication : Application()

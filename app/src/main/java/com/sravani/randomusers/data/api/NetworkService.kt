@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 @Singleton
 interface NetworkService {
-    @GET
+    @GET("api/")
     suspend fun getRandomUsers(@Query("page") page: Int, @Query("results") results: Int): RandomUserResponse
 
 }

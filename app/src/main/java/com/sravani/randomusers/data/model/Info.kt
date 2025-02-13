@@ -10,4 +10,4 @@ data class Info(
     @SerializedName("page")
     val page: Int,
     @SerializedName("version")
-    val version : Int)
+    val version : String)

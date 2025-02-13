@@ -10,12 +10,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+
 @Module
 @InstallIn(SingletonComponent::class)
-class ApplicationModule {
+class ApplicationModule() {
+
     @BaseUrl
     @Provides
-    fun provideBaseUrl(): String = "https://randomuser.me/api/"
+    fun provideBaseUrl(): String = "https://randomuser.me/"
+
+
     @Provides
     @Singleton
     fun provideGsonConverterFactory(): GsonConverterFactory = GsonConverterFactory.create()
@@ -23,7 +27,7 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideNetworkService(
-        @BaseUrl baseUrl: String, gsonConverterFactory: GsonConverterFactory
+       @BaseUrl baseUrl: String,  gsonConverterFactory: GsonConverterFactory
     ): NetworkService {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -31,6 +35,4 @@ class ApplicationModule {
             .build()
             .create(NetworkService::class.java)
     }
-
-
 }
