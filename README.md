@@ -10,8 +10,8 @@ Android technologies such as **Jetpack Compose**, **Dagger Hilt**, **Retrofit**
 ## Screens
 
 <p align="center">
+  <img src="https://github.com/sravanipamu/RandomUsers/blob/main/Splash_Screen.jpeg" alt="shows screen" width="200"/>
   <img src="https://github.com/sravanipamu/RandomUsers/blob/main/User_List.jpeg" alt="splash screen" width="200"/>
-  <img src="https://github.com/G-Anjikumar/MovieApp/blob/0bf2ed113a09852a3264ce8d4bacbfccfc4da10c/shows.png" alt="shows screen" width="200"/>
   <img src="https://github.com/sravanipamu/RandomUsers/blob/main/Details_Page.jpeg" alt="show details" width="200"/>
 </p>
 
