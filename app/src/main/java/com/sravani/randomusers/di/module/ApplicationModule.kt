@@ -2,6 +2,7 @@ package com.sravani.randomusers.di.module
 
 import com.sravani.randomusers.data.api.NetworkService
 import com.sravani.randomusers.di.BaseUrl
+import com.sravani.randomusers.di.ResultCount
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,6 +19,10 @@ class ApplicationModule() {
     @BaseUrl
     @Provides
     fun provideBaseUrl(): String = "https://randomuser.me/"
+
+    @ResultCount
+    @Provides
+    fun provideResultCount() : Int = 10
 
 
     @Provides
