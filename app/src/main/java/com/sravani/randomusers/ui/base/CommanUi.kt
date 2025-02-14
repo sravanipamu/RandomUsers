@@ -86,13 +86,13 @@ fun RowTextDetails(text: String, icon: ImageVector) {
             Icon(
                 imageVector = icon,
                 contentDescription = "Phone Icon",
-                tint = Color.Gray,
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = text,
-                color = Color.Gray,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                 textAlign = TextAlign.Center,
                 maxLines = 1,
                 fontSize = 18.sp,

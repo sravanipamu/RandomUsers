@@ -113,7 +113,7 @@ fun UserItemList(userList: List<User>, navController: NavController) {
 
     Column {
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().padding(top = 10.dp),
             contentPadding = PaddingValues(vertical = 8.dp, horizontal = 8.dp)
         ) {
             items(userList.size) { index ->

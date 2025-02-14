@@ -82,7 +82,7 @@ fun HorizontalUserItem(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(6.dp)
-                                .height(100.dp)
+                                .height(90.dp)
                                 .clip(androidx.compose.foundation.shape.CircleShape)
                                 .border(2.dp, Color.Gray, CircleShape)
                                 .background(MaterialTheme.colorScheme.primaryContainer)
@@ -103,7 +103,7 @@ fun HorizontalUserItem(
                             contentDescription = imageUrl,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
-                                .size(100.dp) // Ensures equal width and height
+                                .size(90.dp) // Ensures equal width and height
                                 .clip(CircleShape) // Clips the image to a circular shape
                                 .border(
                                     2.dp,
@@ -127,7 +127,7 @@ fun HorizontalUserItem(
                 Text(
                     text = name,
                     maxLines = 1,
-                    color = Color.Black,
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 22.sp,
                     fontFamily = FontFamily(Font(R.font.poppins_bold, FontWeight.Bold)),
                     fontWeight = FontWeight.Bold,
@@ -137,7 +137,7 @@ fun HorizontalUserItem(
                 Text(
                     text = if (!TextUtils.isEmpty(location.getFormattedAddress())) location.getFormattedAddress() else "NA",
                     modifier = Modifier.testTag(if (!TextUtils.isEmpty(location.getFormattedAddress())) location.getFormattedAddress() else "NA"),
-                    color = Color.Black,
+                    MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
                     fontSize = 16.sp,
                     fontFamily = FontFamily(Font(R.font.poppins_medium, FontWeight.Black))
                 )
