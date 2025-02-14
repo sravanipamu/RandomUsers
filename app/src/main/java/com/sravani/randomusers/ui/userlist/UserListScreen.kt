@@ -1,6 +1,7 @@
 package com.sravani.randomusers.ui.userlist
 
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -37,11 +38,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.google.gson.Gson
 import com.sravani.randomusers.data.model.User
 import com.sravani.randomusers.ui.base.HorizontalUserItem
+import com.sravani.randomusers.ui.base.Route
 import com.sravani.randomusers.ui.base.ShowError
 import com.sravani.randomusers.ui.base.ShowLoading
 import com.sravani.randomusers.ui.theme.DarkPrimaryColor
@@ -69,13 +69,13 @@ fun HomeRoute(navController: NavController) {
                 .fillMaxSize()
                 .padding(it)
         ) {
-            UserListScreen()
+            UserListScreen(navController)
         }
     }
 }
 
 @Composable
-fun UserListScreen() {
+fun UserListScreen(navController: NavController) {
     var viewModel: UserListViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var resultNumber by remember {
@@ -94,7 +94,7 @@ fun UserListScreen() {
 
         is UiState.Success -> {
             val successState = uiState as UiState.Success
-            UserItemList(userList = successState.data, viewModel)
+            UserItemList(userList = successState.data, navController)
         }
 
         UiState.Loading -> {
@@ -108,7 +108,7 @@ fun UserListScreen() {
 }
 
 @Composable
-fun UserItemList(userList: List<User>, userListViewModel: UserListViewModel) {
+fun UserItemList(userList: List<User>, navController: NavController) {
 
 
     Column {
@@ -120,8 +120,12 @@ fun UserItemList(userList: List<User>, userListViewModel: UserListViewModel) {
                 HorizontalUserItem(
                     userList.get(index).name.first + " " + userList.get(index).name.last,
                     userList.get(index).picture.medium,
-                    userList.get(index).location,
-                )
+                    userList.get(index).location
+                ) {
+                    val userJson = Gson().toJson(userList.get(index))
+                    val encodedUserJson = Uri.encode(userJson)
+                    navController.navigate(Route.Details.createRoute(encodedUserJson))
+                }
                 Spacer(modifier = Modifier.height(16.dp))
             }
         }
@@ -130,7 +134,7 @@ fun UserItemList(userList: List<User>, userListViewModel: UserListViewModel) {
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun SearchBox(goResult : (Int)->Unit) {
+fun SearchBox(goResult: (Int) -> Unit) {
     var number by remember { mutableStateOf("") }
     var isError by remember { mutableStateOf(false) }
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -140,7 +144,8 @@ fun SearchBox(goResult : (Int)->Unit) {
             if (input.all { it.isDigit() }) {
                 number = input
                 isError = false;
-        } },
+            }
+        },
         placeholder = { Text("Enter a number") },
         modifier = Modifier.fillMaxWidth(),
         keyboardOptions = KeyboardOptions.Default.copy(
@@ -148,12 +153,12 @@ fun SearchBox(goResult : (Int)->Unit) {
             imeAction = ImeAction.Go           // Show "Go" button
         ),
         keyboardActions = KeyboardActions(onGo = {
-           if(number.isEmpty() || number.toInt() == 0) {
-                    isError = true
-           } else {
-               keyboardController?.hide()
-               goResult(number.toInt())
-           }
+            if (number.isEmpty() || number.toInt() == 0) {
+                isError = true
+            } else {
+                keyboardController?.hide()
+                goResult(number.toInt())
+            }
         }),
         singleLine = true
     )

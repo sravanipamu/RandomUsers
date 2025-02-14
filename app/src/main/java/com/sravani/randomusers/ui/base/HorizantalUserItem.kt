@@ -50,6 +50,7 @@ fun HorizontalUserItem(
     name: String,
     imageUrl: String,
     location: Location,
+    onClick: () -> Unit
 ) {
     val imageState = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current)
@@ -60,7 +61,7 @@ fun HorizontalUserItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = {})
+            .clickable(onClick = {onClick()})
             .padding(horizontal = 10.dp),
         shape = RoundedCornerShape(10.dp),
     ) {
