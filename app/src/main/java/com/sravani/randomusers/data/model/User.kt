@@ -32,7 +32,11 @@ data class Location(
     @SerializedName("postcode") val postcode: String,
     @SerializedName("coordinates") val coordinates: Coordinates,
     @SerializedName("timezone") val timezone: Timezone
-)
+) {
+    fun getFormattedAddress(): String {
+        return "${street.number} ${street.name}, $city, $state, $country, $postcode"
+    }
+}
 
 data class Street(
     @SerializedName("number") val number: Int,
