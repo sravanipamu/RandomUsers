@@ -12,7 +12,13 @@ data class User (
     @SerializedName("picture")
     val picture: Picture,
     @SerializedName("nat")
-    val nat : String
+    val nat : String,
+    @SerializedName("email")
+    val email: String,
+    @SerializedName("phone")
+    val phone: String,
+    @SerializedName("dob")
+    val dob: Dob,
     )
 
 data class Name(
@@ -59,4 +65,8 @@ data class Picture(
     @SerializedName("thumbnail") val thumbnail: String
 )
 
+data class Dob(
+    val date: String,
+    val age: Int
+)
 
