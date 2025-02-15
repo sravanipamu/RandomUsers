@@ -32,4 +32,4 @@ Android technologies such as **Jetpack Compose**, **Dagger Hilt**, **Retrofit**
 
 You can install this application to test on your android smartphone. To download the application go to your chrome browser and copy-paste the download link:
 
-![Download APK](https://img.shields.io/badge/Download-APK-brightgreen)(https://github.com/G-Anjikumar/MovieApp/releases/download/staging/Shows_Multi_Modular_Final.apk)
+![Download APK](https://img.shields.io/badge/Download-APK-brightgreen)(https://github.com/sravanipamu/RandomUsers/tree/main/release/app-debug.apk)
