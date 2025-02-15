@@ -31,7 +31,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -86,7 +85,7 @@ fun HorizontalUserItem(
                                 .clip(androidx.compose.foundation.shape.CircleShape)
                                 .border(2.dp, Color.Gray, CircleShape)
                                 .background(MaterialTheme.colorScheme.primaryContainer)
-                                .testTag(imageUrl),
+                               ,
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
@@ -103,14 +102,14 @@ fun HorizontalUserItem(
                             contentDescription = imageUrl,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
-                                .size(90.dp) // Ensures equal width and height
-                                .clip(CircleShape) // Clips the image to a circular shape
+                                .size(90.dp)
+                                .clip(CircleShape)
                                 .border(
                                     2.dp,
                                     Color.Gray,
                                     CircleShape
-                                ) // Optional: Adds a border around the image
-                                .testTag(imageUrl)
+                                )
+
                         )
                     }
 
@@ -122,7 +121,6 @@ fun HorizontalUserItem(
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
-                    .testTag(name)
             ) {
                 Text(
                     text = name,
@@ -136,7 +134,7 @@ fun HorizontalUserItem(
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = if (!TextUtils.isEmpty(location.getFormattedAddress())) location.getFormattedAddress() else "NA",
-                    modifier = Modifier.testTag(if (!TextUtils.isEmpty(location.getFormattedAddress())) location.getFormattedAddress() else "NA"),
+                    modifier = Modifier,
                     MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
                     fontSize = 16.sp,
                     fontFamily = FontFamily(Font(R.font.poppins_medium, FontWeight.Black))

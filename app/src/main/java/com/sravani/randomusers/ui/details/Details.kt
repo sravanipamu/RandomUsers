@@ -50,6 +50,9 @@ import coil.compose.rememberAsyncImagePainter
 import com.sravani.randomusers.R
 import com.sravani.randomusers.data.model.User
 import com.sravani.randomusers.ui.base.RowTextDetails
+import com.sravani.randomusers.ui.theme.gradientCenterColor
+import com.sravani.randomusers.ui.theme.gradientEndColor
+import com.sravani.randomusers.ui.theme.gradientStartColor
 import com.sravani.randomusers.utils.Utils
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -116,9 +119,9 @@ fun GradientProfilePic(imageURL: String?) {
                 .background(
                     brush = Brush.verticalGradient(
                         colors = listOf(
-                            Color(0xFF512DA8),
-                            Color(0xFF673AB7), // Medium Purple
-                            Color(0xFF3F51B5)  // Indigo
+                            gradientStartColor,
+                            gradientCenterColor, // Medium Purple
+                            gradientEndColor  // Indigo
                         )
                     )
                 )

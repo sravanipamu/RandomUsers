@@ -12,3 +12,7 @@ val Pink40 = Color(0xFFF8F8F8)
 
 val DarkPrimaryColor = Color(0xFF0A1128)
 val SplashScreenHeaderColor = Color(0xFF0B8596)
+
+val gradientStartColor = Color(0xFF512DA8)
+val gradientCenterColor = Color(0xFF673AB7)
+val gradientEndColor =  Color(0xFF3F51B5)

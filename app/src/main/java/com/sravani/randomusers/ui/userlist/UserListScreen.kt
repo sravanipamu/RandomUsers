@@ -100,17 +100,11 @@ fun UserListScreen(navController: NavController) {
         UiState.Loading -> {
             ShowLoading()
         }
-
-        else -> {
-            // Handle any other states if necessary
-        }
     }
 }
 
 @Composable
 fun UserItemList(userList: List<User>, navController: NavController) {
-
-
     Column {
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(top = 10.dp),
@@ -149,8 +143,8 @@ fun SearchBox(goResult: (Int) -> Unit) {
         placeholder = { Text("Enter a number") },
         modifier = Modifier.fillMaxWidth(),
         keyboardOptions = KeyboardOptions.Default.copy(
-            keyboardType = KeyboardType.Number, // Show numeric keyboard
-            imeAction = ImeAction.Go           // Show "Go" button
+            keyboardType = KeyboardType.Number,
+            imeAction = ImeAction.Go
         ),
         keyboardActions = KeyboardActions(onGo = {
             if (number.isEmpty() || number.toInt() == 0) {
